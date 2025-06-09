@@ -1,0 +1,54 @@
+# Binaries for programs and plugins
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+.env
+# Test binary, built with `go test -c`
+*.test
+
+# Output of the go toolchain
+*.out
+
+# Dependency directories (remove the comment below to include it)
+# vendor/
+
+# Go module cache
+.go/
+
+# IDE files
+.idea/                  # IntelliJ IDEA
+.vscode/                # VS Code
+*.sublime-project       # Sublime Text
+*.sublime-workspace     # Sublime Text
+*.iml                   # IntelliJ IDEA module file
+
+# Editor files
+*~
+*.bak
+*.swp
+*.swo
+
+# Operating System files
+.DS_Store               # macOS
+Thumbs.db               # Windows
+Desktop.ini             # Windows
+
+# Environment variables
+.env
+.env.*
+
+# Log files
+*.log
+
+# Database files (if local database files are used, e.g., SQLite)
+*.db
+*.sqlite
+*.sqlite3
+
+# If you're compiling for a specific OS/architecture, you might have
+# platform-specific binaries that aren't covered by the above.
+# Example:
+# myapp-linux-amd64
+# myapp-windows-amd64.exe
