@@ -29,6 +29,13 @@ import (
 
 
 
+
+
+
+
+
+
+
 	"github.com/gofiber/fiber/v2"
 
 
@@ -127,6 +134,7 @@ import (
 	"context"
 	"fmt"
 	"github.com/gofiber/fiber/v2"
+	"github.com/gofiber/fiber/v2/middleware/cors"
 	"github.com/joho/godotenv"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"
@@ -174,11 +182,11 @@ func main() {
 	app := fiber.New()
 
 	// core error solution
-	// app.Use(cors.New(cors.Config{
-	// 	AllowOrigins: []string{"http://127.0.0.1:5000"},
-	// 	// AllowOrigins: []string{"http://localhost:5173"},
-	// 	AllowHeaders: []string{"Origin", "Content-Type", "Accept"},
-	// }))
+	app.Use(cors.New(cors.Config{
+		// AllowOrigins: "http://127.0.0.1:5000",
+		AllowOrigins: "http://localhost:5173",
+		AllowHeaders: "Origin, Content-Type, Accept",
+	}))
 
 	app.Get("/api/todos", getTodos)
 	app.Post("/api/todos", createTodo)
@@ -188,6 +196,11 @@ func main() {
 	port := os.Getenv("PORT")
 	if port == "" {
 		port = "5000"
+	}
+
+	// for production load
+	if os.Getenv("ENV") == "production" {
+		app.Static("/", "./client/dist")
 	}
 
 	log.Fatal(app.Listen("0.0.0.0:" + port))

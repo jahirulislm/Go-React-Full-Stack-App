@@ -23,6 +23,7 @@ const TodoItem = ({ todo }: { todo: Todo }) => {
 				return data;
 			} catch (error) {
 				console.log(error);
+				throw error
 			}
 		},
 		onSuccess: () => {
